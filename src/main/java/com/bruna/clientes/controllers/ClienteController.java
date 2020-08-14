@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.bruna.clientes.domain.Cliente;
+import com.bruna.clientes.domain.dto.ClienteDTO;
 import com.bruna.clientes.service.ClienteService;
 
 @RestController
@@ -45,20 +46,22 @@ public class ClienteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Cliente cliente){
+	public ResponseEntity<Void> insert(@RequestBody ClienteDTO clienteDto){
+		Cliente cliente = service.fromDTO(clienteDto);
 		cliente = service.insert(cliente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@PutMapping(value = "/id/{id}")
-	public ResponseEntity<Cliente> update(Cliente cliente, @PathVariable Long id){
-		cliente.setId(id);
-		service.update(cliente);
-		return ResponseEntity.ok().body(cliente);
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Cliente> update(@RequestBody ClienteDTO clienteDto, @PathVariable Long id){
+		Cliente obj = service.fromDTO(clienteDto);
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
 	}
 	
-	@DeleteMapping(value = "/id/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();

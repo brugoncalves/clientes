@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.bruna.clientes.domain.Cliente;
+import com.bruna.clientes.domain.dto.ClienteDTO;
 import com.bruna.clientes.repository.ClienteRepository;
 
 @Service
@@ -49,5 +50,9 @@ public class ClienteService {
 		newObj.setCpf(obj.getCpf());
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
+	}
+	
+	public Cliente fromDTO(ClienteDTO clienteDto) {
+		return new Cliente(clienteDto.getId(), clienteDto.getCpf(), clienteDto.getNome(), clienteDto.getEmail());
 	}
 }
