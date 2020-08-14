@@ -2,6 +2,13 @@ package com.bruna.clientes.domain.dto;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.bruna.clientes.domain.Cliente;
 
 public class ClienteDTO implements Serializable{
@@ -10,8 +17,17 @@ public class ClienteDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotEmpty(message="O preenchimento do CPF é obrigatório")
 	private String cpf;
+	
+	@NotEmpty(message="O preenchimento do nome é obrigatório")
+	@Length(min=2, max=80, message="O nome deve conter entre 5 e 80 caracteres")
 	private String nome;
+	
+	@NotEmpty(message="O preenchimento do email é obrigatório")
+	@Email(message="Email inválido")
+	@Column(unique=true)
 	private String email;
 	
 	public ClienteDTO() {

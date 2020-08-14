@@ -2,7 +2,10 @@ package com.bruna.clientes.service;
 
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.bruna.clientes.domain.Cliente;
 import com.bruna.clientes.domain.dto.ClienteDTO;
 import com.bruna.clientes.repository.ClienteRepository;
+import com.bruna.clientes.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
@@ -21,7 +25,7 @@ public class ClienteService {
 	
 	public Cliente findById(Long id) {
 		Optional<Cliente> cliente = repository.findById(id);
-		return cliente.orElseThrow();
+		return cliente.orElseThrow( () -> new ObjectNotFoundException(id));
 	}
 	
 	public Page<Cliente> findAll(Integer page, Integer linesPerPage, String orderBy, String direction){
@@ -35,16 +39,24 @@ public class ClienteService {
 	}
 	
 	public void delete(Long id) {
-		repository.deleteById(id);
+		try {
+			repository.deleteById(id);
+		} catch(EmptyResultDataAccessException e) {
+			throw new ObjectNotFoundException(id);
+		}
 	}
 	
 	
 	public Cliente update(Cliente obj) {
-		Cliente newObj = findById(obj.getId());
-		updateData(newObj, obj);
-		return repository.save(newObj);
+		try {
+			Cliente newObj = findById(obj.getId());
+			updateData(newObj, obj);
+			return repository.save(newObj);
+		} catch(EntityNotFoundException e) {
+			throw new ObjectNotFoundException(obj.getId());
+		}
+		
 	}
-	
 	
 	private void updateData(Cliente newObj, Cliente obj) {
 		newObj.setCpf(obj.getCpf());

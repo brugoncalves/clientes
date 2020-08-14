@@ -2,6 +2,8 @@ package com.bruna.clientes.controller;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +48,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody ClienteDTO clienteDto){
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO clienteDto){
 		Cliente cliente = service.fromDTO(clienteDto);
 		cliente = service.insert(cliente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();
@@ -54,7 +56,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Cliente> update(@RequestBody ClienteDTO clienteDto, @PathVariable Long id){
+	public ResponseEntity<Cliente> update(@Valid @RequestBody ClienteDTO clienteDto, @PathVariable Long id){
 		Cliente obj = service.fromDTO(clienteDto);
 		obj.setId(id);
 		obj = service.update(obj);
