@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.bruna.clientes.domain.Cliente;
 import com.bruna.clientes.domain.dto.ClienteDTO;
+import com.bruna.clientes.domain.dto.ClienteUpdateDTO;
 import com.bruna.clientes.repository.ClienteRepository;
 import com.bruna.clientes.service.exceptions.ObjectNotFoundException;
 
@@ -59,12 +60,15 @@ public class ClienteService {
 	}
 	
 	private void updateData(Cliente newObj, Cliente obj) {
-		newObj.setCpf(obj.getCpf());
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
 	}
 	
 	public Cliente fromDTO(ClienteDTO clienteDto) {
 		return new Cliente(clienteDto.getId(), clienteDto.getCpf(), clienteDto.getNome(), clienteDto.getEmail());
+	}
+	
+	public Cliente fromDTO(ClienteUpdateDTO clienteDto) {
+		return new Cliente(null, null, clienteDto.getNome(), clienteDto.getEmail());
 	}
 }

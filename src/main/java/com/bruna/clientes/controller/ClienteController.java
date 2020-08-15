@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.bruna.clientes.domain.Cliente;
 import com.bruna.clientes.domain.dto.ClienteDTO;
+import com.bruna.clientes.domain.dto.ClienteUpdateDTO;
 import com.bruna.clientes.service.ClienteService;
 
 @RestController
@@ -56,7 +57,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Cliente> update(@Valid @RequestBody ClienteDTO clienteDto, @PathVariable Long id){
+	public ResponseEntity<Cliente> update(@Valid @RequestBody ClienteUpdateDTO clienteDto, @PathVariable Long id){
 		Cliente obj = service.fromDTO(clienteDto);
 		obj.setId(id);
 		obj = service.update(obj);

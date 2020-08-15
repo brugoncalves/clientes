@@ -2,46 +2,39 @@ package com.bruna.clientes.domain.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CPF;
 
 import com.bruna.clientes.domain.Cliente;
-import com.bruna.clientes.service.validations.ClienteInsert;
+import com.bruna.clientes.service.validations.ClienteUpdate;
 
-@ClienteInsert
-public class ClienteDTO implements Serializable{
+@ClienteUpdate
+public class ClienteUpdateDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	
-	@CPF
-	@NotEmpty(message="O preenchimento do CPF é obrigatório")
-	private String cpf;
-	
-	@NotEmpty(message="O preenchimento do nome é obrigatório")
-	@Length(min=2, max=80, message="O nome deve conter entre 5 e 80 caracteres")
+
+	@NotEmpty(message="O nome deve ser preenchido")
+	@Length(min=2, max=80, message="O nome deve conter entre 2 e 80 letras")
 	private String nome;
 	
-	@NotEmpty(message="O preenchimento do email é obrigatório")
-	@Email(message="Email inválido")
-	@Column(unique=true)
+	@NotEmpty(message="O email deve ser preenchido")
+	@Email(message="O e-mail informado não é válido")
 	private String email;
 	
-	public ClienteDTO() {
+	public ClienteUpdateDTO() {
 		
 	}
 	
-	public ClienteDTO(Cliente cliente) {
+	public ClienteUpdateDTO(Cliente cliente) {
 		id = cliente.getId();
-		cpf = cliente.getCpf();
 		nome = cliente.getNome();
 		email = cliente.getEmail();
 	}
+	
 
 	public Long getId() {
 		return id;
@@ -49,14 +42,6 @@ public class ClienteDTO implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getNome() {
@@ -73,8 +58,6 @@ public class ClienteDTO implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-	
+	}	
 
 }
