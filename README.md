@@ -32,6 +32,7 @@ Para isso, é necessário acessar o Postman, selecionar a opção Body e deixar 
 O JSON deve conter os seguintes dados:
 
 {
+
     "cpf": "11111111111",
     
     "nome": "Nazaré Tedesco",
