@@ -30,8 +30,8 @@ Retorna o cliente pelo ID informado no link
 Permite cadastrar um novo cliente.
 Para isso, é necessário acessar o Postman, selecionar a opção Body e deixar as opções raw e JSON selecionadas.
 O JSON deve conter os seguintes dados:
-{
 
+{
     "cpf": "11111111111",
     
     "nome": "Nazaré Tedesco",
@@ -103,7 +103,7 @@ E na tela de login, informe as credenciais abaixo e clique no botão <strong>Con
 
 <strong>Password</strong>: 
 
-As configurações do banco de dados estão no arquivo application.properties em src/main/resources.
+As configurações do banco de dados estão no arquivo <strong>application.properties</strong> em src/main/resources.
 
 
 <h2>Especificações</h2>
