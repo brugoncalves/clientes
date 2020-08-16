@@ -42,7 +42,7 @@ O JSON deve conter os seguintes dados:
 }
 
  
-O CPF acima é somente um exemplo, pois a aplicação aceita somente CPFs válidos.
+O CPF acima é apenas um exemplo, pois a aplicação aceita somente CPFs válidos.
 
 
 <strong>PUT</strong>: http://localhost:8080/api/clientes/{id}
