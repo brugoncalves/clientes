@@ -115,6 +115,8 @@ As configurações do banco de dados estão no arquivo <strong>application.prope
 
 <strong>Framework</strong>: Spring Boot 2.3.3
 
+<strong>Ferramenta de testes para requisições</strong>: Postman
+
 <h2>Dependências</h2>
 <ul>
   <li>Spring Boot Starter Web</li>
