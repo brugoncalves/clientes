@@ -47,7 +47,7 @@ O CPF acima é somente um exemplo, pois a aplicação aceita somente CPFs válid
 
 <strong>PUT</strong>: http://localhost:8080/api/clientes/{id}
 
-Através deste link é possível alterar informações do registro. É permitido alterar o e-mail e o nome do cliente. Deve-se informar o id do cliente que terá os seus dados alterados.
+Através deste link é possível alterar informações do registro. É permitido alterar o e-mail e o nome do cliente. Deve-se informar na URL o id do cliente que terá os seus dados alterados.
 
 <strong>DELETE</strong>: http://localhost:8080/api/clientes/{id}
 
