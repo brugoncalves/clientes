@@ -20,11 +20,11 @@ public class ClienteRepositoryTest {
 	public void deveVerificarAExistênciaDeUmEmail() {
 		
 		//Cenário
-		Cliente cliente = new Cliente(null, "38838937818", "Bruna Gonçalves", "bruna@gmail.com");
+		Cliente cliente = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cliente);
 		
 		//Execução
-		Cliente resultado = repository.findByEmail("bruna@gmail.com");
+		Cliente resultado = repository.findByEmail("walter@gmail.com");
 		
 		//Verificação
 		Assertions.assertThat(resultado).isNotNull();
@@ -37,7 +37,7 @@ public class ClienteRepositoryTest {
 		repository.deleteAll();
 		
 		//Execução
-		Cliente resultado = repository.findByEmail("bruna@gmail.com");
+		Cliente resultado = repository.findByEmail("walter@gmail.com");
 		
 		//Verificação
 		Assertions.assertThat(resultado).isNull();
@@ -47,11 +47,11 @@ public class ClienteRepositoryTest {
 	public void deveVerificarQueOCPFExiste() {
 		
 		//Cenário
-		Cliente cliente = new Cliente(null, "38838937818", "Bruna Gonçalves", "bruna@gmail.com");
+		Cliente cliente = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cliente);
 		
 		//Execução
-		Cliente resultado = repository.findByCpf("38838937818");
+		Cliente resultado = repository.findByCpf("45775660013");
 		
 		//Verificação
 		Assertions.assertThat(resultado).isNotNull();	
@@ -64,7 +64,7 @@ public class ClienteRepositoryTest {
 		repository.deleteAll();
 		
 		//Execução
-		Cliente resultado = repository.findByCpf("38838937818");
+		Cliente resultado = repository.findByCpf("45775660013");
 		
 		//Verificação
 		Assertions.assertThat(resultado).isNull();
