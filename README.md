@@ -109,6 +109,37 @@ E na tela de login, informe as credenciais abaixo e clique no botão <strong>Con
 
 As configurações do banco de dados estão no arquivo <strong>application.properties</strong> em src/main/resources.
 
+<h2>Testes</h2>
+
+Os testes da aplicação foram feitos nas camadas Repository, Service e Controller utilizando Junit e Mockito.
+
+<strong>Cenários testados:</strong>
+<strong>Repository</strong>
+<ul>
+    <li>Verifica que o e-mail existe</li>
+    <li>Verifica que o e-mail não existe</li>
+    <li>Verifica que o CPF existe</li>
+    <li>Verifica que o CPF não existe</li>
+</ul>
+
+<strong>Service</strong>
+<ul>
+    <li>Inserir um cliente</li>
+    <li>Não inserir um cliente com um e-mail que já existe</li>
+    <li>Não inserir um cliente com um CPF que já existe</li>
+    <li>Localizar um cliente por ID</li>
+    <li>Localizar todos os clientes</li>
+    <li>Lançar erro quando tentar buscar um cliente com ID que não existe</li>
+    <li>Excluir um cliente</li>
+    <li>Não excluir um cliente com ID que não existe</li>
+</ul>
+
+<strong>Controller</strong>
+<ul>
+    <li>Localizar um cliente por ID</li>
+    <li>Lançar erro quando tentar buscar um cliente com ID que não existe</li>
+</ul>
+
 
 <h2>Especificações</h2>
 
@@ -129,6 +160,6 @@ As configurações do banco de dados estão no arquivo <strong>application.prope
   <li>Validation Api</li>
   <li>Hibernate Validator</li>
   <li>H2</li>
-  <li>JUnit</li>
+  <li>JUnit 5</li>
   <li>Mockito</li>  
 </ul>
