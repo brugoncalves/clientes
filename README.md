@@ -70,7 +70,7 @@ private String email;
 <strong>Pacote: com.bruna.clientes.domain.dto</strong>
 
 Neste pacote estão as classes ClienteDTO e ClienteUpdateDTO.
-Ambas foram criadas para otimizar o transporte dos dados do cliente e contém as regras de validação, como por exemplo, o preenchimento do CPF do cliente ser obrigatório ao cadastrar um cliente ou não permitir cadastrar um cliente com um e-mail já existente.
+Ambas contém as regras de validação, como por exemplo, o preenchimento do CPF do cliente ser obrigatório ao cadastrar um cliente ou não permitir cadastrar um cliente com um e-mail já existente.
 As anotações @ClienteInsert e @ClienteUpdate foram criadas manualmente para controlar essas validações estão no pacote br.com.bruna.service.validations
 
 
