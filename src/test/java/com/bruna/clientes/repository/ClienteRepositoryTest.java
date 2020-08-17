@@ -69,4 +69,5 @@ public class ClienteRepositoryTest {
 		//Verificação
 		Assertions.assertThat(resultado).isNull();
 	}
+
 }
