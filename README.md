@@ -94,7 +94,7 @@ Este pacote contém as classes FieldMessage, ResourceExceptionHandler, StandardE
 
 Aqui contém as classes ClienteInsert, ClienteInsertValidator, ClienteUpdate e ClienteUpdateValidator. 
 As classes ClienteInsert e ClienteInsertValidator foram utilizadas para criar a anotação customizada ClienteInsert. Esta anotação evita que um cliente seja cadastrado com CPF e email já existentes.
-E as classes ClienteUpdate ClienteUpdateValidator foram utilizadas para criar a anotação customizada ClienteUpdate. Com esta anotação, conseguimos atualizar um cliente alterando nome e email, somente nome ou somente o e-mail. Porém, não é permitido alterar o e-mail de um cliente informando o e-mail de outro cliente que já está cadastrado.
+E as classes ClienteUpdate e ClienteUpdateValidator foram utilizadas para criar a anotação customizada ClienteUpdate. Com esta anotação, conseguimos atualizar um cliente alterando nome e email, somente nome ou somente o e-mail. Porém, não é permitido alterar o e-mail de um cliente informando o e-mail de outro cliente que já está cadastrado.
 
 
 <h2>Base de dados</h2>
@@ -129,4 +129,6 @@ As configurações do banco de dados estão no arquivo <strong>application.prope
   <li>Validation Api</li>
   <li>Hibernate Validator</li>
   <li>H2</li>
+  <li>JUnit</li>
+  <li>Mockito</li>  
 </ul>
