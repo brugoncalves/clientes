@@ -60,8 +60,11 @@ Este pacote contém a classe Cliente, onde estão registrados os atributos de um
 
 
 private Long id;
+
 private String cpf;
+
 private String nome;
+
 private String email;
 
 <strong>Pacote: com.bruna.clientes.domain.dto</strong>
