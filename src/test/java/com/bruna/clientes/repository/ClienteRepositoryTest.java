@@ -18,7 +18,6 @@ public class ClienteRepositoryTest {
 	
 	@Test
 	public void deveVerificarAExistênciaDeUmEmail() {
-		
 		//Cenário
 		Cliente cliente = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cliente);
@@ -32,7 +31,6 @@ public class ClienteRepositoryTest {
 	
 	@Test
 	public void deveVerificarQueOEmailNãoExiste() {
-		
 		//Cenário
 		repository.deleteAll();
 		
@@ -45,7 +43,6 @@ public class ClienteRepositoryTest {
 	
 	@Test
 	public void deveVerificarQueOCPFExiste() {
-		
 		//Cenário
 		Cliente cliente = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cliente);
@@ -59,7 +56,6 @@ public class ClienteRepositoryTest {
 	
 	@Test
 	public void deveVerificarQueOCPFNaoExiste() {
-		
 		//Cenário
 		repository.deleteAll();
 		

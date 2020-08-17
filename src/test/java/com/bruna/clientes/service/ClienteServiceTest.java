@@ -26,7 +26,6 @@ public class ClienteServiceTest {
 	
 	@Test
 	public void deveInserirUmCliente() {
-		
 		//Cenário
 		repository.deleteAll();
 		
@@ -37,7 +36,6 @@ public class ClienteServiceTest {
 	
 	@Test
 	public void naoDeveCadastrarUmClienteComEmailJaExistente() {
-		
 		//Cenário
 		Cliente cli1 = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cli1);
@@ -49,7 +47,6 @@ public class ClienteServiceTest {
 	
 	@Test
 	public void naoDeveCadastrarUmClienteComCPFJaExistente() {
-		
 		//Cenário
 		Cliente cli1 = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cli1);
@@ -72,7 +69,6 @@ public class ClienteServiceTest {
 	
 	@Test
 	public void deveLocalizarTodosOsClientes() {
-		
 		//Cenário
 		Cliente cli1 = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		Cliente cli2 = new Cliente(null, "82339187095", "Jesse Pinkman", "jesse@gmail.com");
@@ -97,7 +93,6 @@ public class ClienteServiceTest {
 	
 	@Test
 	public void deveExcluirUmCliente() {
-		
 		//Cenário
 		Cliente cli1 = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		repository.save(cli1);
@@ -116,7 +111,4 @@ public class ClienteServiceTest {
 			service.delete(1L);
 		});
 	}
-	
-	
-
 }
