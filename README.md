@@ -35,9 +35,9 @@ O JSON deve conter os seguintes dados:
 
     "cpf": "11111111111",
     
-    "nome": "Nazaré Tedesco",
+    "nome": "Walter White",
     
-    "email": "nazare@gmail.com"
+    "email": "walter@gmail.com"
     
 }
 
