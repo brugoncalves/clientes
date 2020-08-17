@@ -60,14 +60,17 @@ Este pacote contém a classe Cliente, onde estão registrados os atributos de um
 
 
 private Long id;
+
 private String cpf;
+
 private String nome;
+
 private String email;
 
 <strong>Pacote: com.bruna.clientes.domain.dto</strong>
 
 Neste pacote estão as classes ClienteDTO e ClienteUpdateDTO.
-Ambas foram criadas para otimizar o transporte dos dados do cliente e contém as regras de validação, como por exemplo, o preenchimento do CPF do cliente ser obrigatório ao cadastrar um cliente ou não permitir cadastrar um cliente com um e-mail já existente.
+Ambas contém as regras de validação, como por exemplo, o preenchimento do CPF do cliente ser obrigatório ao cadastrar um cliente ou não permitir cadastrar um cliente com um e-mail já existente.
 As anotações @ClienteInsert e @ClienteUpdate foram criadas manualmente para controlar essas validações estão no pacote br.com.bruna.service.validations
 
 
@@ -91,7 +94,7 @@ Este pacote contém as classes FieldMessage, ResourceExceptionHandler, StandardE
 
 Aqui contém as classes ClienteInsert, ClienteInsertValidator, ClienteUpdate e ClienteUpdateValidator. 
 As classes ClienteInsert e ClienteInsertValidator foram utilizadas para criar a anotação customizada ClienteInsert. Esta anotação evita que um cliente seja cadastrado com CPF e email já existentes.
-E as classes ClienteUpdate ClienteUpdateValidator foram utilizadas para criar a anotação customizada ClienteUpdate. Com esta anotação, conseguimos atualizar um cliente alterando nome e email, somente nome ou somente o e-mail. Porém, não é permitido alterar o e-mail de um cliente informando o e-mail de outro cliente que já está cadastrado.
+E as classes ClienteUpdate e ClienteUpdateValidator foram utilizadas para criar a anotação customizada ClienteUpdate. Com esta anotação, conseguimos atualizar um cliente alterando nome e email, somente nome ou somente o e-mail. Porém, não é permitido alterar o e-mail de um cliente informando o e-mail de outro cliente que já está cadastrado.
 
 
 <h2>Base de dados</h2>
@@ -126,4 +129,6 @@ As configurações do banco de dados estão no arquivo <strong>application.prope
   <li>Validation Api</li>
   <li>Hibernate Validator</li>
   <li>H2</li>
+  <li>JUnit</li>
+  <li>Mockito</li>  
 </ul>
