@@ -15,12 +15,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.bruna.clientes.domain.Cliente;
-import com.bruna.clientes.domain.dto.ClienteDTO;
-import com.bruna.clientes.repository.ClienteRepository;
 import com.bruna.clientes.service.ClienteService;
 import com.bruna.clientes.service.exceptions.ObjectNotFoundException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @ExtendWith(SpringExtension.class)
@@ -36,31 +32,6 @@ public class ClienteControllerTest {
 	
 	@MockBean
 	ClienteService service;
-
-	@Test
-	public void deveCriarUmNovoCliente() throws Exception {
-		//Cenário
-		Cliente cli1 = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
-		ClienteDTO cliDto = new ClienteDTO(cli1);
-		
-		Mockito.when(service.insert(Mockito.any(Cliente.class))).thenReturn(cli1);
-		String json = new ObjectMapper().writeValueAsString(cliDto);
-		
-		//Ação e Verificação
-		
-		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-				.post(API)
-				.accept(JSON)
-				.contentType(JSON)
-				.content(json);
-		mvc
-			.perform(request)
-			.andExpect(MockMvcResultMatchers.status().isCreated())
-			.andExpect(MockMvcResultMatchers.jsonPath("id").value(cli1.getId()))
-			.andExpect(MockMvcResultMatchers.jsonPath("cpf").value(cli1.getCpf()))
-			.andExpect(MockMvcResultMatchers.jsonPath("nome").value(cli1.getNome()))
-			.andExpect(MockMvcResultMatchers.jsonPath("email").value(cli1.getEmail()));			
-	}
 	
 	@Test
 	public void deveLocalizarUmClientePorId() throws Exception {
