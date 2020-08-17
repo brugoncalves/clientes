@@ -71,7 +71,7 @@ private String email;
 
 Neste pacote estão as classes ClienteDTO e ClienteUpdateDTO.
 Ambas contém as regras de validação, como por exemplo, o preenchimento do CPF do cliente ser obrigatório ao cadastrar um cliente ou não permitir cadastrar um cliente com um e-mail já existente.
-As anotações @ClienteInsert e @ClienteUpdate foram criadas manualmente para controlar essas validações estão no pacote br.com.bruna.service.validations
+As anotações @ClienteInsert e @ClienteUpdate foram criadas manualmente para controlar essas validações e estão no pacote br.com.bruna.service.validations
 
 
 <strong>Pacote: br.com.bruna.clientes.repository</strong>
@@ -114,6 +114,7 @@ As configurações do banco de dados estão no arquivo <strong>application.prope
 Os testes da aplicação foram feitos nas camadas Repository, Service e Controller utilizando Junit e Mockito.
 
 <strong>Cenários testados:</strong>
+
 <strong>Repository</strong>
 <ul>
     <li>Verifica que o e-mail existe</li>
