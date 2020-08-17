@@ -6,7 +6,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -17,11 +16,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.bruna.clientes.domain.Cliente;
 import com.bruna.clientes.domain.dto.ClienteDTO;
+import com.bruna.clientes.repository.ClienteRepository;
 import com.bruna.clientes.service.ClienteService;
 import com.bruna.clientes.service.exceptions.ObjectNotFoundException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@SpringBootTest
+
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = ClienteController.class)
 @AutoConfigureMockMvc
@@ -35,11 +36,11 @@ public class ClienteControllerTest {
 	
 	@MockBean
 	ClienteService service;
-	
+
 	@Test
-	public void deveCriarUmNovoUsuario() throws Exception {
+	public void deveCriarUmNovoCliente() throws Exception {
 		//Cenário
-		Cliente cli1 = new Cliente(1L, "45775660013", "Walter White", "walter@gmail.com");
+		Cliente cli1 = new Cliente(null, "45775660013", "Walter White", "walter@gmail.com");
 		ClienteDTO cliDto = new ClienteDTO(cli1);
 		
 		Mockito.when(service.insert(Mockito.any(Cliente.class))).thenReturn(cli1);
@@ -82,8 +83,8 @@ public class ClienteControllerTest {
 		;
 	}
 	
-	
-	public void deveLancarErroQuandoUsuarioNaoExiste() throws Exception {
+	@Test
+	public void deveLancarErroQuandoClienteNaoExiste() throws Exception {
 		//Cenário
 		Mockito.when(service.findById(1L)).thenThrow(ObjectNotFoundException.class);
 		
@@ -94,9 +95,10 @@ public class ClienteControllerTest {
 															.contentType( JSON );
 				mvc
 					.perform(request)
-					.andExpect( MockMvcResultMatchers.status().isNotFound() );
-				
+					.andExpect( MockMvcResultMatchers.status().isNotFound() );	
 		
 	}
+	
+	
 
 }
